@@ -25,81 +25,38 @@ Every literal value has a home in `src/config/`.
 
 Add more config files as the project grows (copy.ts, auth.ts, env.ts, etc.).
 
-### 2. Design System Classes
+### 2. Design System — Single Source of Truth
 
-The design system provides prefixed classes (`ds-*`). Use them for components:
+The design system is installed from `@digiko/designsystem`. **Do not hardcode class names or token values here.**
 
-```tsx
-// Buttons
-<button className="ds-btn">Primary</button>
-<button className="ds-btn ds-btn--secondary">Secondary</button>
-<button className="ds-btn ds-btn--ghost ds-btn--sm">Small Ghost</button>
+To find available classes, tokens, and components, always read from the source:
 
-// Cards
-<div className="ds-card">
-  <div className="ds-card__header">
-    <h3 className="ds-card__title">Title</h3>
-  </div>
-  <div className="ds-card__body">Content</div>
-</div>
+| What you need | Where to look |
+|---------------|---------------|
+| Component classes (`ds-btn`, `ds-card`, etc.) | `node_modules/@digiko/designsystem/src/components/` |
+| Token values (colors, spacing, radius) | `node_modules/@digiko/designsystem/src/tokens/` |
+| Utility classes | `node_modules/@digiko/designsystem/src/utilities/` |
+| Full compiled CSS | `node_modules/@digiko/designsystem/dist/designsystem.css` |
+| Usage examples | `node_modules/@digiko/designsystem/examples/index.html` |
 
-// Badges
-<span className="ds-badge ds-badge--success">Active</span>
+**Rules:**
+- All DS classes use the `ds-` prefix (BEM-like: `ds-card__header`, `ds-btn--ghost`)
+- Use Tailwind utilities for layout, spacing, and custom styling
+- Use DS classes for pre-built components (buttons, cards, badges, tables, forms, modals, toasts)
+- Read the source CSS files before using a component — they are the truth
 
-// Tables
-<div className="ds-table-wrapper">
-  <table className="ds-table">...</table>
-</div>
+### 3. Semantic Color Tokens
 
-// Forms
-<input className="ds-input" />
-<select className="ds-select">...</select>
-```
+The Tailwind theme mapping lives in `globals.css`. These tokens auto-adapt to light/dark mode. **Do not hardcode color values — read `globals.css` for the current mapping.**
 
-### 3. Tailwind for Layout, DS for Components
+General pattern:
+- Backgrounds: `bg-base`, `bg-surface`, `bg-elevated`, `bg-hover`
+- Text: `text-primary`, `text-secondary`, `text-tertiary`
+- Borders: `border-default`, `border-hover`
+- Inverted: `bg-inverted`, `text-on-inverted`
+- Status: `text-error`, `bg-error-subtle`, etc.
 
-Use Tailwind utilities for layout, spacing, and custom styling.
-Use DS classes for pre-built components.
-
-```tsx
-// Layout with Tailwind
-<div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-
-// Component from DS
-  <div className="ds-card ds-card__body">...</div>
-</div>
-```
-
-### 4. Semantic Color Tokens
-
-Never use hardcoded colors. The design system + globals.css maps tokens to Tailwind:
-
-```tsx
-// Backgrounds
-bg-base           // Page background
-bg-surface        // Card/section background
-bg-elevated       // Elevated elements
-bg-hover          // Hover states
-
-// Text
-text-primary      // Main content
-text-secondary    // Supporting content
-text-tertiary     // Hints, metadata
-
-// Borders
-border-default    // Standard border
-border-hover      // Hover state
-
-// Inverted (primary buttons)
-bg-inverted       // Dark bg in light mode, light bg in dark
-text-on-inverted  // Contrasting text
-
-// Status
-text-error / bg-error-subtle
-text-success / bg-success-subtle
-text-warning / bg-warning-subtle
-text-info / bg-info-subtle
-```
+If a token is missing or renamed, check `globals.css` `@theme inline` block — that is the truth.
 
 ### 5. Absolute Prohibitions
 
@@ -179,6 +136,8 @@ src/
 Dev server:     npm run dev (localhost:3000)
 Build:          npm run build
 Lint:           npm run lint
-Design System:  node_modules/digiko-designsystem/dist/designsystem.css
-DS Docs:        github.com/digiko-dev/designsystem
+Design System:  node_modules/@digiko/designsystem/
+DS Source:      node_modules/@digiko/designsystem/src/
+DS Compiled:    node_modules/@digiko/designsystem/dist/designsystem.css
+DS Repo:        github.com/digiko-dev/designsystem
 ```
