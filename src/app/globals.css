@@ -1,4 +1,4 @@
-@layer ds;
+@layer theme, base, ds, components, utilities;
 @import "tailwindcss";
 @import "@digiko/designsystem" layer(ds);
 
