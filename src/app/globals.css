@@ -1,26 +1,140 @@
+@import "@digiko/designsystem";
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ============================================
+   TAILWIND THEME — Maps DS tokens to utilities
+   Usage: bg-base, text-primary, border-default, etc.
+   ============================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Backgrounds */
+  --color-base: var(--ds-color-bg);
+  --color-surface: var(--ds-color-surface);
+  --color-elevated: var(--ds-color-bg-elevated);
+  --color-hover: var(--ds-color-surface-hover);
+  --color-active: var(--ds-color-surface-active);
+  --color-muted: var(--ds-color-bg-muted);
+
+  /* Text */
+  --color-primary: var(--ds-color-text);
+  --color-secondary: var(--ds-color-text-secondary);
+  --color-tertiary: var(--ds-color-text-tertiary);
+
+  /* Borders */
+  --color-border-default: var(--ds-color-border);
+  --color-border-hover: var(--ds-color-border-hover);
+  --color-border-active: var(--ds-color-border-active);
+
+  /* Interactive */
+  --color-interactive: var(--ds-color-interactive);
+  --color-interactive-hover: var(--ds-color-interactive-hover);
+
+  /* Inverted (primary buttons) */
+  --color-inverted: var(--ds-color-inverted);
+  --color-on-inverted: var(--ds-color-on-inverted);
+
+  /* Status */
+  --color-error: var(--ds-color-error);
+  --color-success: var(--ds-color-success);
+  --color-warning: var(--ds-color-warning);
+  --color-info: var(--ds-color-info);
+  --color-error-subtle: var(--ds-color-error-subtle);
+  --color-success-subtle: var(--ds-color-success-subtle);
+  --color-warning-subtle: var(--ds-color-warning-subtle);
+  --color-info-subtle: var(--ds-color-info-subtle);
+
+  /* Accent */
+  --color-accent-blue: var(--ds-color-accent-blue);
+  --color-accent-purple: var(--ds-color-accent-purple);
+  --color-accent-green: var(--ds-color-accent-green);
+  --color-accent-orange: var(--ds-color-accent-orange);
+
+  /* Overlay & Nav */
+  --color-overlay: var(--ds-color-overlay);
+  --color-nav-bg: var(--ds-color-nav-bg);
+  --color-nav-border: var(--ds-color-nav-border);
+
+  /* Typography */
+  --font-display: var(--ds-font-display);
+  --font-sans: var(--ds-font-sans);
+  --font-mono: var(--ds-font-mono);
+
+  /* Radius */
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-xl: var(--ds-radius-xl);
+  --radius-full: var(--ds-radius-full);
+
+  /* Shadows */
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-lg: var(--ds-shadow-lg);
+
+  /* Layout */
+  --container-max: var(--ds-container-max);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================
+   BASE OVERRIDES
+   ============================================ */
+
+/* DS uses data-theme="dark", next-themes uses class="dark" */
+.dark {
+  --ds-color-bg: #09090b;
+  --ds-color-bg-subtle: #0f0f11;
+  --ds-color-bg-muted: #27272a;
+  --ds-color-bg-elevated: #18181b;
+  --ds-color-surface: #0f0f11;
+  --ds-color-surface-hover: #18181b;
+  --ds-color-surface-active: #27272a;
+  --ds-color-text: #fafafa;
+  --ds-color-text-secondary: #a1a1aa;
+  --ds-color-text-tertiary: #52525b;
+  --ds-color-text-disabled: #3f3f46;
+  --ds-color-inverted: #fafafa;
+  --ds-color-on-inverted: #09090b;
+  --ds-color-border: #27272a;
+  --ds-color-border-hover: #3f3f46;
+  --ds-color-border-active: #52525b;
+  --ds-color-border-subtle: #18181b;
+  --ds-color-interactive: #d4d4d8;
+  --ds-color-interactive-hover: #fafafa;
+  --ds-color-overlay: rgba(0, 0, 0, 0.7);
+  --ds-color-overlay-subtle: rgba(255, 255, 255, 0.03);
+  --ds-color-nav-bg: rgba(9, 9, 11, 0.8);
+  --ds-color-nav-border: rgba(39, 39, 42, 0.6);
+  --ds-color-selection-bg: #fafafa;
+  --ds-color-selection-text: #09090b;
+  --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --ds-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --ds-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --ds-color-success: #4ade80;
+  --ds-color-warning: #fbbf24;
+  --ds-color-error: #f87171;
+  --ds-color-info: #60a5fa;
+  --ds-color-success-subtle: rgba(74, 222, 128, 0.1);
+  --ds-color-warning-subtle: rgba(251, 191, 36, 0.1);
+  --ds-color-error-subtle: rgba(248, 113, 113, 0.1);
+  --ds-color-info-subtle: rgba(96, 165, 250, 0.1);
+  --ds-color-accent-blue: #60a5fa;
+  --ds-color-accent-purple: #a78bfa;
+  --ds-color-accent-green: #4ade80;
+  --ds-color-accent-orange: #fbbf24;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ds-color-bg);
+  color: var(--ds-color-text);
+  font-family: var(--ds-font-sans);
+}
+
+/* Display font weight from token */
+.font-display {
+  font-weight: var(--ds-font-display-weight);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--ds-color-text);
+  color: var(--ds-color-bg);
 }

@@ -1,65 +1,103 @@
-import Image from "next/image";
+import { DashboardShell } from '@/components/layout/DashboardShell'
+import { TrendingUp, Users, FolderKanban, Activity } from 'lucide-react'
 
-export default function Home() {
+const stats = [
+  { label: 'Total Revenue', value: '$45,231', detail: '+20.1% from last month', icon: TrendingUp },
+  { label: 'Active Users', value: '2,350', detail: '+180 this week', icon: Users },
+  { label: 'Projects', value: '12', detail: '3 in progress', icon: FolderKanban },
+  { label: 'Uptime', value: '99.9%', detail: 'Last 30 days', icon: Activity },
+]
+
+const recentActivity = [
+  { id: 1, action: 'New deployment', project: 'Website Redesign', status: 'success', time: '2 min ago' },
+  { id: 2, action: 'Build failed', project: 'Mobile App', status: 'error', time: '15 min ago' },
+  { id: 3, action: 'New member added', project: 'API Gateway', status: 'info', time: '1 hour ago' },
+  { id: 4, action: 'Release published', project: 'Design System', status: 'success', time: '3 hours ago' },
+  { id: 5, action: 'Issue reported', project: 'Auth Service', status: 'warning', time: '5 hours ago' },
+]
+
+const statusBadge: Record<string, string> = {
+  success: 'ds-badge ds-badge--success',
+  error: 'ds-badge ds-badge--error',
+  warning: 'ds-badge ds-badge--warning',
+  info: 'ds-badge ds-badge--info',
+}
+
+export default function DashboardPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <DashboardShell>
+      {/* Page title */}
+      <div className="mb-8">
+        <h2 className="font-display text-2xl text-primary">Overview</h2>
+        <p className="mt-1 text-sm text-secondary">Welcome back. Here&apos;s what&apos;s happening.</p>
+      </div>
+
+      {/* Stat cards */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <div key={stat.label} className="ds-card ds-card__body">
+            <div className="flex items-center justify-between">
+              <p className="text-sm text-secondary">{stat.label}</p>
+              <stat.icon size={18} className="text-tertiary" />
+            </div>
+            <p className="mt-2 font-display text-2xl text-primary">{stat.value}</p>
+            <p className="mt-1 text-xs text-tertiary">{stat.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Content grid */}
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Activity table */}
+        <div className="lg:col-span-2">
+          <div className="ds-card">
+            <div className="ds-card__header">
+              <h3 className="ds-card__title">Recent Activity</h3>
+            </div>
+            <div className="ds-card__body ds-p-0">
+              <div className="ds-table-wrapper">
+                <table className="ds-table">
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                      <th>Project</th>
+                      <th>Status</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recentActivity.map((item) => (
+                      <tr key={item.id}>
+                        <td>{item.action}</td>
+                        <td className="text-secondary">{item.project}</td>
+                        <td>
+                          <span className={statusBadge[item.status]}>
+                            {item.status}
+                          </span>
+                        </td>
+                        <td className="text-tertiary">{item.time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Quick actions */}
+        <div className="ds-card">
+          <div className="ds-card__header">
+            <h3 className="ds-card__title">Quick Actions</h3>
+          </div>
+          <div className="ds-card__body space-y-3">
+            <button className="ds-btn ds-btn--full">New Project</button>
+            <button className="ds-btn ds-btn--secondary ds-btn--full">Invite Member</button>
+            <button className="ds-btn ds-btn--outline ds-btn--full">View Reports</button>
+            <button className="ds-btn ds-btn--ghost ds-btn--full">Settings</button>
+          </div>
         </div>
-      </main>
-    </div>
-  );
+      </div>
+    </DashboardShell>
+  )
 }
