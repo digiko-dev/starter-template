@@ -58,6 +58,31 @@ General pattern:
 
 If a token is missing or renamed, check `globals.css` `@theme inline` block — that is the truth.
 
+### 4. CSS Layer Order — Do Not Change
+
+The first line of `globals.css` is critical:
+
+```css
+@layer theme, base, ds, components, utilities;
+```
+
+This sets the priority cascade between Tailwind and the Design System:
+
+| Layer | Priority | What it contains |
+|-------|----------|------------------|
+| `theme` | Lowest | Tailwind theme variables |
+| `base` | ↑ | Tailwind reset/preflight |
+| `ds` | ↑ | **Design System** (tokens, components, utilities) |
+| `components` | ↑ | Tailwind components |
+| `utilities` | Highest | Tailwind utilities (`p-6`, `flex`, `lg:pl-64`, etc.) |
+
+**Why this matters:**
+- `base` > `ds`: Tailwind's reset takes precedence over the DS reset (no conflicts)
+- `ds` > `base`: DS component styles (tables, badges, cards) apply correctly
+- `utilities` > `ds`: Tailwind utilities always win (you can override DS with `p-6`, `rounded-lg`, etc.)
+
+**If you remove or reorder this line**, DS components will either break (no styles) or override Tailwind utilities (padding, margin, etc. stop working).
+
 ### 5. Absolute Prohibitions
 
 ```tsx
