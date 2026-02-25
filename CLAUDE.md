@@ -123,13 +123,21 @@ import { DashboardShell } from '@/components/layout/DashboardShell'
 
 ### 8. Overriding Design Tokens
 
-Add overrides in `globals.css` under `:root` (light) or `.dark` (dark):
+Add overrides in `globals.css`. Dark mode is handled natively by the DS (via `.dark` class from `next-themes`), so you only need `:root` for global overrides:
 
 ```css
 :root {
   --ds-font-display: "Inter", sans-serif;
   --ds-radius-xl: 12px;
   --ds-container-max: 1400px;
+}
+```
+
+To override only in dark mode:
+
+```css
+.dark {
+  --ds-color-bg: #0a0a0f;
 }
 ```
 
