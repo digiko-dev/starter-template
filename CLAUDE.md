@@ -5,7 +5,7 @@
 Starter template with dashboard layout. Built on the Digiko Design System.
 
 **Stack:** Next.js (App Router), React, TypeScript, Tailwind CSS 4
-**Design System:** `digiko-designsystem` (installed from GitHub)
+**Design System:** `@digiko-npm/designsystem` (installed from npm)
 **Deploy:** Vercel
 **Typography:** Clash Display (headings) + Switzer (body) + Geist Mono (code)
 **Theme:** Dark default, light + system supported via `next-themes`
@@ -27,17 +27,17 @@ Add more config files as the project grows (copy.ts, auth.ts, env.ts, etc.).
 
 ### 2. Design System — Single Source of Truth
 
-The design system is installed from `@digiko/designsystem`. **Do not hardcode class names or token values here.**
+The design system is installed from `@digiko-npm/designsystem`. **Do not hardcode class names or token values here.**
 
 To find available classes, tokens, and components, always read from the source:
 
 | What you need | Where to look |
 |---------------|---------------|
-| Component classes (`ds-btn`, `ds-card`, etc.) | `node_modules/@digiko/designsystem/src/components/` |
-| Token values (colors, spacing, radius) | `node_modules/@digiko/designsystem/src/tokens/` |
-| Utility classes | `node_modules/@digiko/designsystem/src/utilities/` |
-| Full compiled CSS | `node_modules/@digiko/designsystem/dist/designsystem.css` |
-| Usage examples | `node_modules/@digiko/designsystem/examples/index.html` |
+| Component classes (`ds-btn`, `ds-card`, etc.) | `node_modules/@digiko-npm/designsystem/src/components/` |
+| Token values (colors, spacing, radius) | `node_modules/@digiko-npm/designsystem/src/tokens/` |
+| Utility classes | `node_modules/@digiko-npm/designsystem/src/utilities/` |
+| Full compiled CSS | `node_modules/@digiko-npm/designsystem/dist/designsystem.css` |
+| Usage examples | `node_modules/@digiko-npm/designsystem/examples/index.html` |
 
 **Rules:**
 - All DS classes use the `ds-` prefix (BEM-like: `ds-card__header`, `ds-btn--ghost`)
@@ -161,8 +161,8 @@ src/
 Dev server:     npm run dev (localhost:3000)
 Build:          npm run build
 Lint:           npm run lint
-Design System:  node_modules/@digiko/designsystem/
-DS Source:      node_modules/@digiko/designsystem/src/
-DS Compiled:    node_modules/@digiko/designsystem/dist/designsystem.css
+Design System:  node_modules/@digiko-npm/designsystem/
+DS Source:      node_modules/@digiko-npm/designsystem/src/
+DS Compiled:    node_modules/@digiko-npm/designsystem/dist/designsystem.css
 DS Repo:        github.com/digiko-dev/designsystem
 ```

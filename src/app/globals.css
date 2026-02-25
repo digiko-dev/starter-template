@@ -1,6 +1,6 @@
 @layer theme, base, ds, components, utilities;
 @import "tailwindcss";
-@import "@digiko/designsystem" layer(ds);
+@import "@digiko-npm/designsystem" layer(ds);
 
 /* ============================================
    TAILWIND THEME — Maps DS tokens to utilities

@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@digiko/designsystem": "github:digiko-dev/designsystem",
+    "@digiko-npm/designsystem": "^0.2.0",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",
     "lucide-react": "^0.575.0",
