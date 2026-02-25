@@ -79,50 +79,6 @@
    BASE OVERRIDES
    ============================================ */
 
-/* DS uses data-theme="dark", next-themes uses class="dark" */
-.dark {
-  --ds-color-bg: #09090b;
-  --ds-color-bg-subtle: #0f0f11;
-  --ds-color-bg-muted: #27272a;
-  --ds-color-bg-elevated: #18181b;
-  --ds-color-surface: #0f0f11;
-  --ds-color-surface-hover: #18181b;
-  --ds-color-surface-active: #27272a;
-  --ds-color-text: #fafafa;
-  --ds-color-text-secondary: #a1a1aa;
-  --ds-color-text-tertiary: #71717a;
-  --ds-color-text-disabled: #3f3f46;
-  --ds-color-inverted: #fafafa;
-  --ds-color-on-inverted: #09090b;
-  --ds-color-border: #27272a;
-  --ds-color-border-hover: #3f3f46;
-  --ds-color-border-active: #52525b;
-  --ds-color-border-subtle: #18181b;
-  --ds-color-interactive: #d4d4d8;
-  --ds-color-interactive-hover: #fafafa;
-  --ds-color-overlay: rgba(0, 0, 0, 0.7);
-  --ds-color-overlay-subtle: rgba(255, 255, 255, 0.03);
-  --ds-color-nav-bg: rgba(9, 9, 11, 0.8);
-  --ds-color-nav-border: rgba(39, 39, 42, 0.6);
-  --ds-color-selection-bg: #fafafa;
-  --ds-color-selection-text: #09090b;
-  --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --ds-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --ds-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --ds-color-success: #4ade80;
-  --ds-color-warning: #fbbf24;
-  --ds-color-error: #f87171;
-  --ds-color-info: #60a5fa;
-  --ds-color-success-subtle: rgba(74, 222, 128, 0.1);
-  --ds-color-warning-subtle: rgba(251, 191, 36, 0.1);
-  --ds-color-error-subtle: rgba(248, 113, 113, 0.1);
-  --ds-color-info-subtle: rgba(96, 165, 250, 0.1);
-  --ds-color-accent-blue: #60a5fa;
-  --ds-color-accent-purple: #a78bfa;
-  --ds-color-accent-green: #4ade80;
-  --ds-color-accent-orange: #fbbf24;
-}
-
 body {
   background-color: var(--ds-color-bg);
   color: var(--ds-color-text);
