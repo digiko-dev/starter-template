@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${clashDisplay.variable} ${switzer.variable} ${GeistMono.variable} antialiased`}
+        className={`${clashDisplay.variable} ${switzer.variable} ${GeistMono.variable}`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

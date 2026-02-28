@@ -27,29 +27,29 @@ export default function DashboardPage() {
   return (
     <DashboardShell>
       {/* Page title */}
-      <div className="mb-8">
-        <h2 className="font-display text-2xl text-primary">Overview</h2>
-        <p className="mt-1 text-sm text-secondary">Welcome back. Here&apos;s what&apos;s happening.</p>
+      <div className="ds-mb-8">
+        <h2 className="font-display ds-text-2xl ds-text-primary">Overview</h2>
+        <p className="ds-mt-1 ds-text-sm ds-text-secondary">Welcome back. Here&apos;s what&apos;s happening.</p>
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="ds-grid ds-grid-cols-1 ds-gap-4 ds-sm:grid-cols-2 ds-lg:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="ds-card ds-card__body">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-secondary">{stat.label}</p>
-              <stat.icon size={18} className="text-tertiary" />
+            <div className="ds-flex ds-items-center ds-justify-between">
+              <p className="ds-text-sm ds-text-secondary">{stat.label}</p>
+              <stat.icon size={18} className="ds-text-tertiary" />
             </div>
-            <p className="mt-2 font-display text-2xl text-primary">{stat.value}</p>
-            <p className="mt-1 text-xs text-tertiary">{stat.detail}</p>
+            <p className="ds-mt-2 font-display ds-text-2xl ds-text-primary">{stat.value}</p>
+            <p className="ds-mt-1 ds-text-xs ds-text-tertiary">{stat.detail}</p>
           </div>
         ))}
       </div>
 
       {/* Content grid */}
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="ds-mt-8 ds-grid ds-grid-cols-1 ds-gap-6 ds-lg:grid-cols-3">
         {/* Activity table */}
-        <div className="lg:col-span-2">
+        <div className="ds-lg:col-span-2">
           <div className="ds-card">
             <div className="ds-card__header">
               <h3 className="ds-card__title">Recent Activity</h3>
@@ -69,13 +69,13 @@ export default function DashboardPage() {
                     {recentActivity.map((item) => (
                       <tr key={item.id}>
                         <td>{item.action}</td>
-                        <td className="text-secondary">{item.project}</td>
+                        <td className="ds-text-secondary">{item.project}</td>
                         <td>
                           <span className={statusBadge[item.status]}>
                             {item.status}
                           </span>
                         </td>
-                        <td className="text-tertiary">{item.time}</td>
+                        <td className="ds-text-tertiary">{item.time}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -90,7 +90,7 @@ export default function DashboardPage() {
           <div className="ds-card__header">
             <h3 className="ds-card__title">Quick Actions</h3>
           </div>
-          <div className="ds-card__body space-y-3">
+          <div className="ds-card__body ds-space-y-3">
             <button className="ds-btn ds-btn--full">New Project</button>
             <button className="ds-btn ds-btn--secondary ds-btn--full">Invite Member</button>
             <button className="ds-btn ds-btn--outline ds-btn--full">View Reports</button>

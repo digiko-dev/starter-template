@@ -8,12 +8,12 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-base">
+    <div className="ds-min-h-screen ds-bg-base">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="lg:pl-64">
+      <div className="main-offset">
         <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="p-6">{children}</main>
+        <main className="ds-p-6">{children}</main>
       </div>
     </div>
   )

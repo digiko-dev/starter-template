@@ -34,26 +34,25 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       {/* Mobile overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-overlay lg:hidden"
+          className="sidebar-overlay ds-lg:hidden"
           onClick={onClose}
         />
       )}
 
       <aside
         className={cn(
-          'fixed top-0 left-0 z-50 flex h-screen w-64 flex-col border-r border-border-default bg-surface transition-transform duration-300',
-          'lg:translate-x-0',
-          open ? 'translate-x-0' : '-translate-x-full'
+          'sidebar',
+          open && 'sidebar--open'
         )}
       >
         {/* Brand */}
-        <div className="flex h-16 items-center justify-between border-b border-border-default px-6">
-          <Link href="/" className="font-display text-lg text-primary">
+        <div className="ds-flex ds-h-16 ds-items-center ds-justify-between ds-border-b ds-px-6">
+          <Link href="/" className="font-display ds-text-lg ds-text-primary">
             {siteConfig.name}
           </Link>
           <button
             onClick={onClose}
-            className="ds-btn ds-btn--ghost ds-btn--icon lg:hidden"
+            className="ds-btn ds-btn--ghost ds-btn--icon ds-lg:hidden"
             aria-label="Close sidebar"
           >
             <X size={18} />
@@ -61,8 +60,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <ul className="space-y-1">
+        <nav className="ds-flex-1 ds-overflow-y-auto ds-px-3 ds-py-4">
+          <ul className="ds-space-y-1">
             {siteConfig.nav.map((item) => {
               const Icon = iconMap[item.icon] ?? LayoutDashboard
               const isActive = pathname === item.href
@@ -73,10 +72,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     href={item.href}
                     onClick={onClose}
                     className={cn(
-                      'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors',
-                      isActive
-                        ? 'bg-elevated text-primary font-medium'
-                        : 'text-secondary hover:bg-hover hover:text-primary'
+                      'nav-item',
+                      isActive && 'nav-item--active'
                     )}
                   >
                     <Icon size={18} />
@@ -89,8 +86,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </nav>
 
         {/* Footer */}
-        <div className="border-t border-border-default px-6 py-4">
-          <p className="text-xs text-tertiary">
+        <div className="ds-border-t ds-px-6 ds-py-4">
+          <p className="ds-text-xs ds-text-tertiary">
             Built with Digiko DS
           </p>
         </div>

@@ -4,8 +4,8 @@
 
 Starter template with dashboard layout. Built on the Digiko Design System.
 
-**Stack:** Next.js (App Router), React, TypeScript, Tailwind CSS 4
-**Design System:** `@digiko-npm/designsystem` (installed from npm)
+**Stack:** Next.js (App Router), React, TypeScript
+**Design System:** `@digiko-npm/designsystem` (CSS-only, installed from npm)
 **Deploy:** Vercel
 **Typography:** Clash Display (headings) + Switzer (body) + Geist Mono (code)
 **Theme:** Dark default, light + system supported via `next-themes`
@@ -41,66 +41,55 @@ To find available classes, tokens, and components, always read from the source:
 
 **Rules:**
 - All DS classes use the `ds-` prefix (BEM-like: `ds-card__header`, `ds-btn--ghost`)
-- Use Tailwind utilities for layout, spacing, and custom styling
-- Use DS classes for pre-built components (buttons, cards, badges, tables, forms, modals, toasts)
+- Use DS utility classes for layout, spacing, and styling (e.g. `ds-flex`, `ds-p-6`, `ds-text-sm`)
+- Use DS component classes for pre-built components (buttons, cards, badges, tables, forms, modals, toasts)
 - Read the source CSS files before using a component — they are the truth
+- **No Tailwind** — this project uses only DS utilities and project-level component classes
 
 ### 3. Semantic Color Tokens
 
-The Tailwind theme mapping lives in `globals.css`. These tokens auto-adapt to light/dark mode. **Do not hardcode color values — read `globals.css` for the current mapping.**
+DS tokens auto-adapt to light/dark mode. **Do not hardcode color values.**
 
 General pattern:
-- Backgrounds: `bg-base`, `bg-surface`, `bg-elevated`, `bg-hover`
-- Text: `text-primary`, `text-secondary`, `text-tertiary`
-- Borders: `border-default`, `border-hover`
-- Inverted: `bg-inverted`, `text-on-inverted`
-- Status: `text-error`, `bg-error-subtle`, etc.
+- Backgrounds: `ds-bg-base`, `ds-bg-surface`, `ds-bg-elevated`, `ds-bg-muted`
+- Text: `ds-text-primary`, `ds-text-secondary`, `ds-text-tertiary`
+- Borders: `ds-border-b`, `ds-border-t` (use DS border tokens)
+- Inverted: `ds-bg-inverted`, `ds-text-on-inverted`
+- Status: `ds-badge--error`, `ds-badge--success`, etc.
 
-If a token is missing or renamed, check `globals.css` `@theme inline` block — that is the truth.
-
-### 4. CSS Layer Order — Do Not Change
-
-The first line of `globals.css` is critical:
+### 4. CSS Architecture
 
 ```css
-@layer theme, base, ds, components, utilities;
+/* globals.css */
+@import "@digiko-npm/designsystem";   /* All DS tokens, components, utilities */
+@import "../styles/components.css";    /* Project-specific component classes */
 ```
 
-This sets the priority cascade between Tailwind and the Design System:
-
-| Layer | Priority | What it contains |
-|-------|----------|------------------|
-| `theme` | Lowest | Tailwind theme variables |
-| `base` | ↑ | Tailwind reset/preflight |
-| `ds` | ↑ | **Design System** (tokens, components, utilities) |
-| `components` | ↑ | Tailwind components |
-| `utilities` | Highest | Tailwind utilities (`p-6`, `flex`, `lg:pl-64`, etc.) |
-
-**Why this matters:**
-- `base` > `ds`: Tailwind's reset takes precedence over the DS reset (no conflicts)
-- `ds` > `base`: DS component styles (tables, badges, cards) apply correctly
-- `utilities` > `ds`: Tailwind utilities always win (you can override DS with `p-6`, `rounded-lg`, etc.)
-
-**If you remove or reorder this line**, DS components will either break (no styles) or override Tailwind utilities (padding, margin, etc. stop working).
+Three layers:
+1. **DS tokens & utilities** — from the npm package (`ds-*` prefix)
+2. **Project component classes** — in `src/styles/components.css` (semantic names like `sidebar`, `nav-item`, `dashboard-header`)
+3. **Base styles** — in `globals.css` (body, selection, font-display)
 
 ### 5. Absolute Prohibitions
 
 ```tsx
 // FORBIDDEN — Hardcoded colors
-className="text-blue-500"
-className="bg-zinc-900"
+style={{ color: '#3b82f6' }}
 
-// REQUIRED — Semantic tokens
-className="text-primary"
-className="bg-surface"
+// REQUIRED — Semantic DS tokens
+className="ds-text-primary"
 
-// FORBIDDEN — Arbitrary values
-className="max-w-[1200px]"
-className="text-[14px]"
+// FORBIDDEN — Arbitrary inline values for things DS covers
+style={{ padding: '24px' }}
 
-// REQUIRED — Tokens or standard Tailwind
-className="max-w-7xl"
-className="text-sm"
+// REQUIRED — DS utility classes
+className="ds-p-6"
+
+// FORBIDDEN — Tailwind classes (no Tailwind in this project)
+className="flex items-center gap-4"
+
+// REQUIRED — DS-prefixed utilities
+className="ds-flex ds-items-center ds-gap-4"
 ```
 
 ### 6. Import Alias
@@ -141,6 +130,28 @@ To override only in dark mode:
 }
 ```
 
+### 9. Project Component Classes
+
+Project-specific interactive patterns live in `src/styles/components.css`. These use DS tokens but are not part of the DS itself:
+
+| Class | Purpose |
+|-------|---------|
+| `sidebar` | Fixed sidebar with mobile translate |
+| `sidebar--open` | Sidebar visible (mobile) |
+| `sidebar-overlay` | Mobile backdrop overlay |
+| `main-offset` | Desktop content offset for sidebar |
+| `dashboard-header` | Sticky header with blur |
+| `nav-item` | Sidebar navigation link |
+| `nav-item--active` | Active state for nav link |
+
+### 10. cn() Utility
+
+`cn()` in `src/lib/utils.ts` uses `clsx` for conditional class merging:
+
+```tsx
+className={cn('nav-item', isActive && 'nav-item--active')}
+```
+
 ---
 
 ## Project Architecture
@@ -150,15 +161,17 @@ src/
 ├── app/
 │   ├── layout.tsx          # Root layout (fonts, providers)
 │   ├── page.tsx            # Dashboard page
-│   └── globals.css         # DS import + Tailwind theme mapping
+│   └── globals.css         # DS import + base styles
 ├── components/
 │   ├── layout/             # Shell, Sidebar, Header, ThemeProvider
 │   └── ui/                 # ThemeToggle, future components
 ├── config/                 # All configuration
 │   ├── site.ts             # App name, nav items
 │   └── routes.ts           # Route paths
+├── styles/
+│   └── components.css      # Project-specific component classes
 └── lib/
-    └── utils.ts            # cn() helper
+    └── utils.ts            # cn() helper (clsx)
 ```
 
 ---

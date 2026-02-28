@@ -1,79 +1,5 @@
-@layer theme, base, ds, components, utilities;
-@import "tailwindcss";
-@import "@digiko-npm/designsystem" layer(ds);
-
-/* ============================================
-   TAILWIND THEME — Maps DS tokens to utilities
-   Usage: bg-base, text-primary, border-default, etc.
-   ============================================ */
-@theme inline {
-  /* Backgrounds */
-  --color-base: var(--ds-color-bg);
-  --color-surface: var(--ds-color-surface);
-  --color-elevated: var(--ds-color-bg-elevated);
-  --color-hover: var(--ds-color-surface-hover);
-  --color-active: var(--ds-color-surface-active);
-  --color-muted: var(--ds-color-bg-muted);
-
-  /* Text */
-  --color-primary: var(--ds-color-text);
-  --color-secondary: var(--ds-color-text-secondary);
-  --color-tertiary: var(--ds-color-text-tertiary);
-
-  /* Borders */
-  --color-border-default: var(--ds-color-border);
-  --color-border-hover: var(--ds-color-border-hover);
-  --color-border-active: var(--ds-color-border-active);
-
-  /* Interactive */
-  --color-interactive: var(--ds-color-interactive);
-  --color-interactive-hover: var(--ds-color-interactive-hover);
-
-  /* Inverted (primary buttons) */
-  --color-inverted: var(--ds-color-inverted);
-  --color-on-inverted: var(--ds-color-on-inverted);
-
-  /* Status */
-  --color-error: var(--ds-color-error);
-  --color-success: var(--ds-color-success);
-  --color-warning: var(--ds-color-warning);
-  --color-info: var(--ds-color-info);
-  --color-error-subtle: var(--ds-color-error-subtle);
-  --color-success-subtle: var(--ds-color-success-subtle);
-  --color-warning-subtle: var(--ds-color-warning-subtle);
-  --color-info-subtle: var(--ds-color-info-subtle);
-
-  /* Accent */
-  --color-accent-blue: var(--ds-color-accent-blue);
-  --color-accent-purple: var(--ds-color-accent-purple);
-  --color-accent-green: var(--ds-color-accent-green);
-  --color-accent-orange: var(--ds-color-accent-orange);
-
-  /* Overlay & Nav */
-  --color-overlay: var(--ds-color-overlay);
-  --color-nav-bg: var(--ds-color-nav-bg);
-  --color-nav-border: var(--ds-color-nav-border);
-
-  /* Typography */
-  --font-display: var(--ds-font-display);
-  --font-sans: var(--ds-font-sans);
-  --font-mono: var(--ds-font-mono);
-
-  /* Radius */
-  --radius-sm: var(--ds-radius-sm);
-  --radius-md: var(--ds-radius-md);
-  --radius-lg: var(--ds-radius-lg);
-  --radius-xl: var(--ds-radius-xl);
-  --radius-full: var(--ds-radius-full);
-
-  /* Shadows */
-  --shadow-sm: var(--ds-shadow-sm);
-  --shadow-md: var(--ds-shadow-md);
-  --shadow-lg: var(--ds-shadow-lg);
-
-  /* Layout */
-  --container-max: var(--ds-container-max);
-}
+@import "@digiko-npm/designsystem";
+@import "../styles/components.css";
 
 /* ============================================
    BASE OVERRIDES
@@ -83,6 +9,8 @@ body {
   background-color: var(--ds-color-bg);
   color: var(--ds-color-text);
   font-family: var(--ds-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Display font weight from token */

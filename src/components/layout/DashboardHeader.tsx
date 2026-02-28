@@ -9,21 +9,21 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border-default bg-nav-bg px-6 backdrop-blur-xl backdrop-saturate-150">
-      <div className="flex items-center gap-3">
+    <header className="dashboard-header ds-flex ds-h-16 ds-items-center ds-justify-between ds-px-6">
+      <div className="ds-flex ds-items-center ds-gap-3">
         <button
           onClick={onMenuClick}
-          className="ds-btn ds-btn--ghost ds-btn--icon lg:hidden"
+          className="ds-btn ds-btn--ghost ds-btn--icon ds-lg:hidden"
           aria-label="Open menu"
         >
           <Menu size={18} />
         </button>
-        <h1 className="font-display text-lg text-primary">Dashboard</h1>
+        <h1 className="font-display ds-text-lg ds-text-primary">Dashboard</h1>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="ds-flex ds-items-center ds-gap-2">
         <ThemeToggle />
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-inverted text-on-inverted text-sm font-medium">
+        <div className="ds-flex ds-h-8 ds-w-8 ds-items-center ds-justify-center ds-rounded-full ds-bg-inverted ds-text-on-inverted ds-text-sm ds-font-medium">
           U
         </div>
       </div>
