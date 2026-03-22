@@ -46,7 +46,47 @@ To find available classes, tokens, and components, always read from the source:
 - Read the source CSS files before using a component — they are the truth
 - **No Tailwind** — this project uses only DS utilities and project-level component classes
 
-### 3. Semantic Color Tokens
+### 3. CSS Variable vs Utility Class — Critical Distinction
+
+`--ds-*` are CSS custom properties (for `var()` in CSS). They are **NOT** class names.
+`ds-*` are utility/component classes (for `className` in JSX).
+
+```tsx
+// ❌ WRONG — CSS variable names used as classes, do nothing
+className="ds-color-text"        // use ds-text-primary
+className="ds-radius-lg"         // use ds-rounded-lg
+className="ds-color-surface"     // use ds-bg-surface
+className="ds-duration-fast"     // not a class — use in CSS: var(--ds-duration-fast)
+
+// ✅ CORRECT
+className="ds-text-primary"      // text color
+className="ds-rounded-lg"        // border radius
+className="ds-bg-surface"        // background
+```
+
+| Want to use in `className` | Use this class | NOT this (CSS variable) |
+|---|---|---|
+| Text color | `ds-text-primary` | `ds-color-text` ❌ |
+| Background | `ds-bg-surface` | `ds-color-surface` ❌ |
+| Border | `ds-border` | `ds-color-border` ❌ |
+| Border radius | `ds-rounded-lg` | `ds-radius-lg` ❌ |
+| Padding | `ds-p-4` | `ds-space-4` ❌ |
+
+### 3a. Responsive Utilities
+
+The DS ships built-in responsive variants — use them directly:
+
+```tsx
+<div className="ds-grid ds-grid-cols-1 ds-sm:grid-cols-2 ds-lg:grid-cols-4">
+<div className="ds-lg:hidden">         {/* hidden on lg+ */}
+<div className="ds-hidden ds-lg:block"> {/* visible only on lg+ */}
+```
+
+Available: `ds-sm/md/lg:hidden`, `ds-sm/md/lg:block`, `ds-sm/md/lg:flex`,
+`ds-sm/md/lg:grid-cols-{2-4}`, `ds-md/lg:col-span-{1-3}`, `ds-sm/md:flex-row`
+
+### 4. Semantic Color Tokens
+
 
 DS tokens auto-adapt to light/dark mode. **Do not hardcode color values.**
 
@@ -91,6 +131,8 @@ className="flex items-center gap-4"
 // REQUIRED — DS-prefixed utilities
 className="ds-flex ds-items-center ds-gap-4"
 ```
+
+**Use DS size tiers for alignment.** When mixing elements (icons, text, buttons, inputs, etc.) in a flex row, use the same size tier (`--ds-size-1` through `--ds-size-4`) to ensure consistent heights. Don't reinvent heights with padding math.
 
 ### 6. Import Alias
 
