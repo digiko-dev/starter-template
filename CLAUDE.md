@@ -5,7 +5,7 @@
 Starter template with dashboard layout. Built on the Digiko Design System.
 
 **Stack:** Next.js (App Router), React, TypeScript
-**Design System:** `@digiko-npm/designsystem` (CSS-only, installed from npm)
+**Design System:** `@digiko-npm/designsystem@0.9.1` (CSS-only, installed from npm)
 **Deploy:** Vercel
 **Typography:** Clash Display (headings) + Switzer (body) + Geist Mono (code)
 **Theme:** Dark default, light + system supported via `next-themes`
@@ -107,7 +107,7 @@ General pattern:
 
 Three layers:
 1. **DS tokens & utilities** — from the npm package (`ds-*` prefix)
-2. **Project component classes** — in `src/styles/components.css` (semantic names like `sidebar`, `nav-item`, `dashboard-header`)
+2. **Project component classes** — in `src/styles/components.css` (nearly empty now -- layout CSS is in DS via `ds-admin-layout`)
 3. **Base styles** — in `globals.css` (body, selection, font-display)
 
 ### 5. Absolute Prohibitions
@@ -172,19 +172,9 @@ To override only in dark mode:
 }
 ```
 
-### 9. Project Component Classes
+### 9. Admin Layout
 
-Project-specific interactive patterns live in `src/styles/components.css`. These use DS tokens but are not part of the DS itself:
-
-| Class | Purpose |
-|-------|---------|
-| `sidebar` | Fixed sidebar with mobile translate |
-| `sidebar--open` | Sidebar visible (mobile) |
-| `sidebar-overlay` | Mobile backdrop overlay |
-| `main-offset` | Desktop content offset for sidebar |
-| `dashboard-header` | Sticky header with blur |
-| `nav-item` | Sidebar navigation link |
-| `nav-item--active` | Active state for nav link |
+The admin/dashboard layout uses `ds-admin-layout` from the Design System. All sidebar, header, and content area layout CSS is provided by DS -- `src/styles/components.css` is nearly empty now (all layout CSS has moved to DS).
 
 ### 10. cn() Utility
 

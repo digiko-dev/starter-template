@@ -34,15 +34,15 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       {/* Mobile overlay */}
       {open && (
         <div
-          className="sidebar-overlay ds-lg:hidden"
+          className="ds-admin__overlay ds-lg:hidden"
           onClick={onClose}
         />
       )}
 
       <aside
         className={cn(
-          'sidebar',
-          open && 'sidebar--open'
+          'ds-admin__sidebar',
+          open && 'ds-admin__sidebar--open'
         )}
       >
         {/* Brand */}
@@ -72,8 +72,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     href={item.href}
                     onClick={onClose}
                     className={cn(
-                      'nav-item',
-                      isActive && 'nav-item--active'
+                      'ds-admin__nav-item',
+                      isActive && 'ds-admin__nav-item--active'
                     )}
                   >
                     <Icon size={18} />
