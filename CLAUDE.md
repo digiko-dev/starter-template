@@ -1,3 +1,11 @@
+## Design System → [DS_HEALTH.md](/Projects/DS_HEALTH.md)
+For dev conventions (API shape, TanStack Query, Supabase, Redis, commit) → [DEV_CONVENTIONS.md](/Projects/DEV_CONVENTIONS.md)
+
+QUARANTINE attiva. Regole DS, azioni aperte, metriche, QUARANTINE rules: tutto centralizzato in [DS_HEALTH.md](/Projects/DS_HEALTH.md).
+Customizzazioni CSS project-specific: [DS_CUSTOM.md](DS_CUSTOM.md) — consultare prima di aggiungere/modificare CSS custom.
+
+---
+
 # CLAUDE.md — Starter Template Guidelines
 
 ## Project Overview
@@ -27,9 +35,7 @@ Add more config files as the project grows (copy.ts, auth.ts, env.ts, etc.).
 
 ### 2. Design System — Single Source of Truth
 
-The design system is installed from `@digiko-npm/designsystem`. **Do not hardcode class names or token values here.**
-
-To find available classes, tokens, and components, always read from the source:
+The design system is installed from `@digiko-npm/designsystem`. Always read source before using a component:
 
 | What you need | Where to look |
 |---------------|---------------|
@@ -39,65 +45,9 @@ To find available classes, tokens, and components, always read from the source:
 | Full compiled CSS | `node_modules/@digiko-npm/designsystem/dist/designsystem.css` |
 | Usage examples | `node_modules/@digiko-npm/designsystem/examples/index.html` |
 
-**Rules:**
-- All DS classes use the `ds-` prefix (BEM-like: `ds-card__header`, `ds-btn--ghost`)
-- Use DS utility classes for layout, spacing, and styling (e.g. `ds-flex`, `ds-p-6`, `ds-text-sm`)
-- Use DS component classes for pre-built components (buttons, cards, badges, tables, forms, modals, toasts)
-- Read the source CSS files before using a component — they are the truth
-- **No Tailwind** — this project uses only DS utilities and project-level component classes
+For DS styling rules, component-first approach, and usage patterns → DS_HEALTH.md
 
-### 3. CSS Variable vs Utility Class — Critical Distinction
-
-`--ds-*` are CSS custom properties (for `var()` in CSS). They are **NOT** class names.
-`ds-*` are utility/component classes (for `className` in JSX).
-
-```tsx
-// ❌ WRONG — CSS variable names used as classes, do nothing
-className="ds-color-text"        // use ds-text-primary
-className="ds-radius-lg"         // use ds-rounded-lg
-className="ds-color-surface"     // use ds-bg-surface
-className="ds-duration-fast"     // not a class — use in CSS: var(--ds-duration-fast)
-
-// ✅ CORRECT
-className="ds-text-primary"      // text color
-className="ds-rounded-lg"        // border radius
-className="ds-bg-surface"        // background
-```
-
-| Want to use in `className` | Use this class | NOT this (CSS variable) |
-|---|---|---|
-| Text color | `ds-text-primary` | `ds-color-text` ❌ |
-| Background | `ds-bg-surface` | `ds-color-surface` ❌ |
-| Border | `ds-border` | `ds-color-border` ❌ |
-| Border radius | `ds-rounded-lg` | `ds-radius-lg` ❌ |
-| Padding | `ds-p-4` | `ds-space-4` ❌ |
-
-### 3a. Responsive Utilities
-
-The DS ships built-in responsive variants — use them directly:
-
-```tsx
-<div className="ds-grid ds-grid-cols-1 ds-sm:grid-cols-2 ds-lg:grid-cols-4">
-<div className="ds-lg:hidden">         {/* hidden on lg+ */}
-<div className="ds-hidden ds-lg:block"> {/* visible only on lg+ */}
-```
-
-Available: `ds-sm/md/lg:hidden`, `ds-sm/md/lg:block`, `ds-sm/md/lg:flex`,
-`ds-sm/md/lg:grid-cols-{2-4}`, `ds-md/lg:col-span-{1-3}`, `ds-sm/md:flex-row`
-
-### 4. Semantic Color Tokens
-
-
-DS tokens auto-adapt to light/dark mode. **Do not hardcode color values.**
-
-General pattern:
-- Backgrounds: `ds-bg-base`, `ds-bg-surface`, `ds-bg-elevated`, `ds-bg-muted`
-- Text: `ds-text-primary`, `ds-text-secondary`, `ds-text-tertiary`
-- Borders: `ds-border-b`, `ds-border-t` (use DS border tokens)
-- Inverted: `ds-bg-inverted`, `ds-text-on-inverted`
-- Status: `ds-badge--error`, `ds-badge--success`, etc.
-
-### 4. CSS Architecture
+### 3. CSS Architecture
 
 ```css
 /* globals.css */
@@ -110,51 +60,16 @@ Three layers:
 2. **Project component classes** — in `src/styles/components.css` (nearly empty now -- layout CSS is in DS via `ds-admin-layout`)
 3. **Base styles** — in `globals.css` (body, selection, font-display)
 
-### 5. Absolute Prohibitions
-
-```tsx
-// FORBIDDEN — Hardcoded colors
-style={{ color: '#3b82f6' }}
-
-// REQUIRED — Semantic DS tokens
-className="ds-text-primary"
-
-// FORBIDDEN — Arbitrary inline values for things DS covers
-style={{ padding: '24px' }}
-
-// REQUIRED — DS utility classes
-className="ds-p-6"
-
-// FORBIDDEN — Tailwind classes (no Tailwind in this project)
-className="flex items-center gap-4"
-
-// REQUIRED — DS-prefixed utilities
-className="ds-flex ds-items-center ds-gap-4"
-```
-
-**Use DS size tiers for alignment.** When mixing elements (icons, text, buttons, inputs, etc.) in a flex row, use the same size tier (`--ds-size-1` through `--ds-size-4`) to ensure consistent heights. Don't reinvent heights with padding math.
-
-### 6. Import Alias
-
-Always use `@/` for imports:
-
-```typescript
-import { siteConfig } from '@/config/site'
-import { ROUTES } from '@/config/routes'
-import { cn } from '@/lib/utils'
-import { DashboardShell } from '@/components/layout/DashboardShell'
-```
-
-### 7. Adding a New Page
+### 4. Adding a New Page
 
 1. Create `src/app/your-page/page.tsx`
 2. Add route to `src/config/routes.ts`
 3. Add nav item to `src/config/site.ts`
 4. Wrap content in `<DashboardShell>`
 
-### 8. Overriding Design Tokens
+### 5. Overriding Design Tokens
 
-Add overrides in `globals.css`. Dark mode is handled natively by the DS (via `.dark` class from `next-themes`), so you only need `:root` for global overrides:
+Add overrides in `globals.css`:
 
 ```css
 :root {
@@ -162,26 +77,6 @@ Add overrides in `globals.css`. Dark mode is handled natively by the DS (via `.d
   --ds-radius-xl: 12px;
   --ds-container-max: 1400px;
 }
-```
-
-To override only in dark mode:
-
-```css
-.dark {
-  --ds-color-bg: #0a0a0f;
-}
-```
-
-### 9. Admin Layout
-
-The admin/dashboard layout uses `ds-admin-layout` from the Design System. All sidebar, header, and content area layout CSS is provided by DS -- `src/styles/components.css` is nearly empty now (all layout CSS has moved to DS).
-
-### 10. cn() Utility
-
-`cn()` in `src/lib/utils.ts` uses `clsx` for conditional class merging:
-
-```tsx
-className={cn('nav-item', isActive && 'nav-item--active')}
 ```
 
 ---
@@ -219,3 +114,11 @@ DS Source:      node_modules/@digiko-npm/designsystem/src/
 DS Compiled:    node_modules/@digiko-npm/designsystem/dist/designsystem.css
 DS Repo:        github.com/digiko-dev/designsystem
 ```
+
+---
+
+## End-of-Session Checklist
+
+For DS checklist (QUARANTINE, compliance, build, git) → [DS_HEALTH.md](/Projects/DS_HEALTH.md)
+
+This is a template project — no project-specific checklist items needed.
