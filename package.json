@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "again": "next build && pm2 restart starter-template",
     "lint": "eslint"
   },
   "dependencies": {
-    "@digiko-npm/designsystem": "^0.9.8",
+    "@digiko-npm/designsystem": "^0.9.11",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",
     "lucide-react": "^0.575.0",
