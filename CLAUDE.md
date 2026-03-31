@@ -106,7 +106,8 @@ src/
 ## Quick Reference
 
 ```
-Dev server:     npm run dev (localhost:3000)
+Local URL:      http://starter.test (PM2 + Caddy, port 4006)
+Dev server:     npm run dev (only for hot-reload when actively developing)
 Build:          npm run build
 Lint:           npm run lint
 Design System:  node_modules/@digiko-npm/designsystem/
@@ -114,6 +115,16 @@ DS Source:      node_modules/@digiko-npm/designsystem/src/
 DS Compiled:    node_modules/@digiko-npm/designsystem/dist/designsystem.css
 DS Repo:        github.com/digiko-dev/designsystem
 ```
+
+---
+
+### Living Registry
+
+- `ds.manifest.json` nella root del progetto traccia versione DS, override, e ultima sessione
+- A chiusura sessione, aggiornare `last_session` (data) e `last_session_summary` (1 riga su cosa e stato fatto)
+- Per rigenerare i conteggi override: `node ~/Projects/generate-manifest.js`
+- Per stato ecosistema: `node ~/Projects/ds-registry.js`
+- Il manifest va committato in git
 
 ---
 
