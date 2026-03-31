@@ -1,0 +1,30 @@
+{
+  "$schema": "ds-manifest-v1",
+  "project": "starter-template",
+  "ds_version_declared": "^0.9.11",
+  "ds_version_resolved": "0.9.37",
+  "last_session": "2026-03-31",
+  "last_session_summary": "Courier: bump DS v0.9.36 → v0.9.37 (WCAG contrast fix). Build clean.",
+  "overrides": {
+    "token_count": 0,
+    "token_list": [],
+    "component_override_count": 0,
+    "component_override_list": [],
+    "custom_class_count": 1,
+    "files_with_overrides": []
+  },
+  "css_architecture": {
+    "layers": [
+      "ds"
+    ],
+    "override_isolation": "isolated",
+    "total_css_lines": 32
+  },
+  "notes": null,
+  "ds_version_installed": "0.9.37",
+  "metrics": {
+    "last_updated": "2026-03-30"
+  },
+  "compliance": "green",
+  "governance": "active"
+}
