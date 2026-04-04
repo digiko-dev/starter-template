@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@digiko-npm/designsystem": "^0.9.40",
+    "@digiko-npm/ds-react": "^0.4.0",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",
     "lucide-react": "^0.575.0",
