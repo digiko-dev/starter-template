@@ -1,7 +1,8 @@
 ## Design System → [DS_HEALTH.md](/Projects/DS_HEALTH.md)
 For dev conventions (API shape, TanStack Query, Supabase, Redis, commit) → [DEV_CONVENTIONS.md](/Projects/DEV_CONVENTIONS.md)
 
-QUARANTINE attiva. Regole DS, azioni aperte, metriche, QUARANTINE rules: tutto centralizzato in [DS_HEALTH.md](/Projects/DS_HEALTH.md).
+CONTROLLED MODE attivo. Regole DS, azioni aperte, metriche: tutto centralizzato in [DS_HEALTH.md](/Projects/DS_HEALTH.md).
+Ops Triage: when the user describes a task, automatically call `ops_triage`. Details in DS_HEALTH.md section "Ops Triage".
 Customizzazioni CSS project-specific: [DS_CUSTOM.md](DS_CUSTOM.md) — consultare prima di aggiungere/modificare CSS custom.
 
 ---
@@ -130,6 +131,6 @@ DS Repo:        github.com/digiko-dev/designsystem
 
 ## End-of-Session Checklist
 
-For DS checklist (QUARANTINE, compliance, build, git) → [DS_HEALTH.md](/Projects/DS_HEALTH.md)
+For DS checklist (CONTROLLED MODE, compliance, build, git) → [DS_HEALTH.md](/Projects/DS_HEALTH.md)
 
 This is a template project — no project-specific checklist items needed.
