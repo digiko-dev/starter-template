@@ -1,11 +1,10 @@
 {
-  "$schema": "ds-manifest-v1",
+  "$schema": "ds-manifest-v2",
   "project": "starter-template",
   "ds_version_declared": "^0.9.40",
   "ds_version_resolved": "0.9.40",
   "ds_version_installed": "0.9.40",
   "last_session": "2026-04-01",
-  "last_session_summary": "Courier: batch bump DS v0.9.38 → v0.9.40 (brand tokens + toggle redesign). Build clean.",
   "overrides": {
     "token_count": 0,
     "token_list": [],
