@@ -14,7 +14,7 @@ Customizzazioni CSS project-specific: [DS_CUSTOM.md](DS_CUSTOM.md) — consultar
 Starter template with dashboard layout. Built on the Digiko Design System.
 
 **Stack:** Next.js (App Router), React, TypeScript
-**Design System:** `@digiko-npm/designsystem@0.9.1` (CSS-only, installed from npm)
+**Design System:** `@digiko-npm/designsystem` (CSS-only, installed from npm — vedi `package.json` per versione corrente)
 **Deploy:** Vercel
 **Typography:** Clash Display (headings) + Switzer (body) + Geist Mono (code)
 **Theme:** Dark default, light + system supported via `next-themes`

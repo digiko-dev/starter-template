@@ -2,9 +2,9 @@
 
 Inventario delle customizzazioni CSS project-specific rispetto al Design System.
 
-**Ultimo aggiornamento:** 26 Mar 2026
-**DS Version:** ^0.9.8
-**File CSS custom:** `src/styles/components.css` (vuoto), `src/app/globals.css` (26 righe)
+**Ultimo aggiornamento:** 21 Apr 2026
+**DS Version:** ^0.10.6
+**File CSS custom:** `src/app/globals.css` (22 righe, solo body + selection), `src/styles/components.css` (vuoto — solo header)
 
 ---
 
@@ -12,29 +12,24 @@ Inventario delle customizzazioni CSS project-specific rispetto al Design System.
 
 | Metrica | Valore |
 |---------|--------|
-| Classi custom definite | 1 (`.font-display`) |
+| Classi custom definite | 0 |
 | Override DS | 0 |
 | Inline styles | 0 |
 | Classi non definite | 0 |
-| Compliance | **~100% — Progetto modello** |
+| Compliance | **100% — Progetto modello** |
 
 ---
 
-## Unica Customizzazione
+## Note
 
-### `.font-display` (globals.css:17-19)
-```css
-.font-display {
-  font-weight: var(--ds-font-display-weight);
-}
-```
-**Scopo:** Wrapper semantico per il peso del display font.
-**Usata in:** DashboardHeader, Sidebar, page.tsx (4 punti).
-**Valutazione:** Legittima — espone un token DS come classe utility. Potrebbe essere assorbita nel DS come utility ufficiale.
+- Zero custom CSS oltre al setup base (body background/color/font-family, selection colors)
+- Heading semantici `h1`/`h2` lasciano che gli stili base DS governino font-family + color
+- Sidebar brand usa `.ds-heading-ui` (admin heading convention, Switzer medium)
+- Stat numbers usano `.ds-stat-number` (display font, tabular-nums)
+- Rimossa `.font-display` (21 Apr 2026) — sostituita dalle classi heading canoniche DS
 
 ---
 
 ## Azioni Future
 
-- [ ] Valutare se `ds-font-display-weight` dovrebbe diventare utility nel DS
-- [ ] Questo template è il baseline — ogni nuovo progetto dovrebbe partire da qui
+- [ ] Template baseline pulito — ogni nuovo progetto dovrebbe partire da qui

@@ -18,7 +18,7 @@ export function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
         >
           <Menu size={18} />
         </button>
-        <h1 className="font-display ds-text-lg ds-text-primary">Dashboard</h1>
+        <h1 className="ds-text-lg">Dashboard</h1>
       </div>
 
       <div className="ds-flex ds-items-center ds-gap-2">

@@ -47,7 +47,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       >
         {/* Brand */}
         <div className="ds-flex ds-h-16 ds-items-center ds-justify-between ds-border-b ds-px-6">
-          <Link href="/" className="font-display ds-text-lg ds-text-primary">
+          <Link href="/" className="ds-heading-ui ds-text-lg ds-text-primary">
             {siteConfig.name}
           </Link>
           <button

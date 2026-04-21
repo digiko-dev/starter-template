@@ -1,16 +1,16 @@
 {
   "$schema": "ds-manifest-v2",
   "project": "starter-template",
-  "ds_version_declared": "^0.9.40",
-  "ds_version_resolved": "0.9.40",
-  "ds_version_installed": "0.9.40",
+  "ds_version_declared": "^0.10.6",
+  "ds_version_resolved": "0.10.6",
+  "ds_version_installed": "0.10.6",
   "last_session": "2026-04-01",
   "overrides": {
     "token_count": 0,
     "token_list": [],
     "component_override_count": 0,
     "component_override_list": [],
-    "custom_class_count": 1,
+    "custom_class_count": 0,
     "files_with_overrides": []
   },
   "css_architecture": {
@@ -18,13 +18,13 @@
       "ds"
     ],
     "override_isolation": "isolated",
-    "total_css_lines": 32
+    "total_css_lines": 27
   },
   "metrics": {
     "override_count": 0,
-    "custom_class_count": 1,
+    "custom_class_count": 0,
     "delta": 0,
-    "last_updated": "2026-04-01"
+    "last_updated": "2026-04-21"
   },
   "compliance": "green",
   "governance": "active",

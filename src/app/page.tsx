@@ -28,7 +28,7 @@ export default function DashboardPage() {
     <DashboardShell>
       {/* Page title */}
       <div className="ds-mb-8">
-        <h2 className="font-display ds-text-2xl ds-text-primary">Overview</h2>
+        <h2 className="ds-text-2xl">Overview</h2>
         <p className="ds-mt-1 ds-text-sm ds-text-secondary">Welcome back. Here&apos;s what&apos;s happening.</p>
       </div>
 
@@ -40,7 +40,7 @@ export default function DashboardPage() {
               <p className="ds-text-sm ds-text-secondary">{stat.label}</p>
               <stat.icon size={18} className="ds-text-tertiary" />
             </div>
-            <p className="ds-mt-2 font-display ds-text-2xl ds-text-primary">{stat.value}</p>
+            <p className="ds-stat-number ds-mt-2">{stat.value}</p>
             <p className="ds-mt-1 ds-text-xs ds-text-tertiary">{stat.detail}</p>
           </div>
         ))}
