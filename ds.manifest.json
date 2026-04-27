@@ -1,9 +1,9 @@
 {
   "$schema": "ds-manifest-v2",
   "project": "starter-template",
-  "ds_version_declared": "^0.10.6",
-  "ds_version_resolved": "0.10.6",
-  "ds_version_installed": "0.10.6",
+  "ds_version_declared": "^0.10.9",
+  "ds_version_resolved": "0.10.9",
+  "ds_version_installed": "0.10.9",
   "last_session": "2026-04-01",
   "overrides": {
     "token_count": 0,
@@ -24,7 +24,7 @@
     "override_count": 0,
     "custom_class_count": 0,
     "delta": 0,
-    "last_updated": "2026-04-21"
+    "last_updated": "2026-04-27"
   },
   "compliance": "green",
   "governance": "active",
