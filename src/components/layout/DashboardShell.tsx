@@ -1,41 +1,50 @@
 'use client'
 
-import { useState } from 'react'
-import { X } from 'lucide-react'
-import { Drawer, DrawerBody, DrawerContent, DrawerHeader } from '@adamarant/ds-react'
-import { IconBtn } from '@adamarant/ds-react'
+import type { ReactNode } from 'react'
+import {
+  LayoutDashboard,
+  FolderKanban,
+  Users,
+  BarChart3,
+  Settings,
+} from 'lucide-react'
+import { AdminShell, type NavItem } from '@adamarant/ds-admin'
+import { AdminThemeToggle } from '@adamarant/ds-admin/theme'
 import { siteConfig } from '@/config/site'
-import { Sidebar } from './Sidebar'
-import { DashboardNav } from './DashboardNav'
-import { DashboardHeader } from './DashboardHeader'
+import { ROUTES } from '@/config/routes'
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const close = () => setSidebarOpen(false)
+/* The dashboard frame is `@adamarant/ds-admin`'s AdminShell — the sidebar,
+   mobile drawer, header and content well all come from the package, so this
+   template (and every scaffold from it) shares one shell instead of a copy
+   that rots. Only the project's own data is wired here: nav, brand, theme. */
 
+const iconMap: Record<string, React.ElementType> = {
+  LayoutDashboard,
+  FolderKanban,
+  Users,
+  BarChart3,
+  Settings,
+}
+
+const nav: NavItem[] = siteConfig.dashboardNav.map((item) => {
+  const Icon = iconMap[item.icon] ?? LayoutDashboard
+  return {
+    id: item.href,
+    label: item.label,
+    href: item.href,
+    icon: <Icon size={18} />,
+  }
+})
+
+export function DashboardShell({ children }: { children: ReactNode }) {
   return (
-    <div className="ds-admin ds-admin--expanded">
-      <Sidebar />
-
-      {/* Mobile menu — the documented admin-layout contract is a drawer. */}
-      <Drawer open={sidebarOpen} onClose={close} className="ds-lg:hidden">
-        <DrawerContent>
-          <DrawerHeader>
-            <span className="ds-heading-ui">{siteConfig.name}</span>
-            <IconBtn aria-label="Close menu" onClick={close}>
-              <X size={18} />
-            </IconBtn>
-          </DrawerHeader>
-          <DrawerBody className="ds-p-0">
-            <DashboardNav onNavigate={close} />
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-
-      <div className="ds-admin__main">
-        <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="ds-admin__content">{children}</main>
-      </div>
-    </div>
+    <AdminShell
+      nav={nav}
+      brandName={siteConfig.name}
+      brandHref={ROUTES.dashboard}
+      themeToggle={<AdminThemeToggle />}
+    >
+      {children}
+    </AdminShell>
   )
 }
