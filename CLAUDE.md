@@ -91,8 +91,9 @@ src/
 │   ├── page.tsx            # Dashboard page
 │   └── globals.css         # DS import + base styles
 ├── components/
-│   ├── layout/             # Shell, Sidebar, Header, ThemeProvider
-│   └── ui/                 # ThemeToggle, future components
+│   ├── layout/             # DashboardShell (thin wrapper over @adamarant/ds-admin
+│   │                       #   AdminShell), SiteHeader/SiteFooter, ThemeProvider
+│   └── ui/                 # ThemeToggle (public site), future components
 ├── config/                 # All configuration
 │   ├── site.ts             # App name, nav items
 │   └── routes.ts           # Route paths

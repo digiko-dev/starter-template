@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@adamarant/designsystem": "^0.30.0",
+    "@adamarant/ds-admin": "^0.17.0",
     "@adamarant/ds-react": "^1.11.0",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",
