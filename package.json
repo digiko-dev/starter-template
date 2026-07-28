@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "again": "next build && pm2 restart starter-template",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:css": "stylelint 'src/**/*.css'"
   },
   "dependencies": {
-    "@adamarant/designsystem": "^0.34.0",
+    "@adamarant/designsystem": "^0.35.1",
     "@adamarant/ds-admin": "^0.17.0",
     "@adamarant/ds-react": "^1.11.0",
     "clsx": "^2.1.1",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "stylelint": "^17.14.1",
     "typescript": "^5"
   }
 }
