@@ -65,7 +65,7 @@ export default function HomePage() {
           <Grid cols="1" gap="6" className="ds-md:grid-cols-3">
             {features.map((f) => (
               <div key={f.title} className="ds-card ds-card__body ds-flex ds-flex-col ds-gap-3">
-                <f.icon size={22} className="ds-text-secondary" />
+                <f.icon size={22} className="ds-text-primary" />
                 <p className="ds-overline">{f.eyebrow}</p>
                 <h3 className="ds-card__title">{f.title}</h3>
                 <p>{f.body}</p>
