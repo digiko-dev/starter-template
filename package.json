@@ -11,7 +11,7 @@
     "lint:css": "stylelint 'src/**/*.css'"
   },
   "dependencies": {
-    "@adamarant/designsystem": "^0.35.1",
+    "@adamarant/designsystem": "^0.36.0",
     "@adamarant/ds-admin": "^0.17.0",
     "@adamarant/ds-react": "^1.11.0",
     "clsx": "^2.1.1",
