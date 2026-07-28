@@ -42,7 +42,7 @@ export default function DashboardPage() {
               <stat.icon size={18} className="ds-text-tertiary" />
             </div>
             <p className="ds-stat-number ds-mt-2">{stat.value}</p>
-            <p className="ds-mt-1 ds-text-xs ds-text-tertiary">{stat.detail}</p>
+            <p className="ds-mt-1 ds-text-xs ds-text-secondary">{stat.detail}</p>
           </div>
         ))}
       </div>
@@ -70,7 +70,7 @@ export default function DashboardPage() {
                     {recentActivity.map((item) => (
                       <tr key={item.id}>
                         <td>{item.action}</td>
-                        <td className="ds-text-secondary">{item.project}</td>
+                        <td>{item.project}</td>
                         <td>
                           <span className={statusBadge[item.status]}>
                             {item.status}
