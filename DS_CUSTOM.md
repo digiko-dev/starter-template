@@ -50,3 +50,27 @@ Motion rispetta `prefers-reduced-motion`. Overlay a `z-dropdown`, header a `z-st
 ## Azioni Future
 
 - [ ] Le 6 classi site-shell sono candidate a diventare un layer DS (nav/overlay) se ricorrono nei consumer
+
+---
+
+## Role ladder (5 Ago 2026, DS 0.38.4) — scala ADOTTATA
+
+`ds-hero-title` → `ds-heading-1`, `ds-section-title` → `ds-heading-2`,
+`ds-editorial-title` → `ds-heading-3`, `ds-editorial-lede` → `ds-copy`.
+
+**A differenza dei siti live, qui la scala del DS è stata adottata davvero**
+(scelta owner): questo è uno scaffold, non un sito in produzione, e i cloni
+futuri devono nascere già sulla ladder invece di ereditare un blocco di token
+che pinna curve vecchie. Niente pin in `globals.css`.
+
+Cosa cambia, a 1280px: `heading-1` 72 → **80px**, `heading-2` 36 → **64px**,
+`copy` 22 → **20px**. Verificato: nessun overflow, desktop e mobile (375),
+la pagina non scrolla in orizzontale.
+
+**`data-surface="product"` sulle superfici che non sono web.** Adottare la
+ladder significa adottarne entrambe le superfici, non imporre le taglie web a
+un pannello: senza il marcatore, un titolo di login rendeva a 64px. La shell
+`(auth)` lo dichiara, e "Sign in" torna a 24px / peso 500 / faccia sans, che è
+il valore giusto per una card di autenticazione. **Le dashboard restano da
+sistemare al centro**: passano da `AdminShell` di `ds-admin`, che deve
+dichiararlo lei — voce aperta in `infra/DS_HEALTH.md`.

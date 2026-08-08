@@ -9,8 +9,8 @@ export default function ContactPage() {
     <section className="ds-section ds-pt-16">
       <Flex direction="col" gap="6" className="ds-container ds-max-w-3xl">
         <p className="ds-overline">Contact</p>
-        <h1 className="ds-section-title">Get in touch.</h1>
-        <p className="ds-editorial-lede">
+        <h1 className="ds-heading-2">Get in touch.</h1>
+        <p className="ds-copy">
           Swap this for a form or your preferred contact method.
         </p>
         <a

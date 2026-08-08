@@ -36,8 +36,8 @@ export default function HomePage() {
           className="ds-container ds-text-center ds-max-w-3xl ds-mx-auto"
         >
           <p className="ds-overline">Starter template</p>
-          <h1 className="ds-hero-title">A website and a dashboard, in one starter.</h1>
-          <p className="ds-editorial-lede">
+          <h1 className="ds-heading-1">A website and a dashboard, in one starter.</h1>
+          <p className="ds-copy">
             Header, content, footer, and a modern fullscreen mobile menu — plus the
             dashboard you already know. Start from a real site, not a blank page.
           </p>
@@ -60,7 +60,7 @@ export default function HomePage() {
         <Flex direction="col" gap="8" className="ds-container">
           <Flex direction="col" gap="4" className="ds-max-w-2xl">
             <p className="ds-overline">Features</p>
-            <h2 className="ds-section-title">Everything a new project reuses.</h2>
+            <h2 className="ds-heading-2">Everything a new project reuses.</h2>
           </Flex>
           <Grid cols="1" gap="6" className="ds-md:grid-cols-3">
             {features.map((f) => (
@@ -83,8 +83,8 @@ export default function HomePage() {
           gap="6"
           className="ds-container ds-text-center ds-max-w-2xl ds-mx-auto"
         >
-          <h2 className="ds-section-title">Start building.</h2>
-          <p className="ds-editorial-lede">
+          <h2 className="ds-heading-2">Start building.</h2>
+          <p className="ds-copy">
             Clone it, rename the config, and you have a site and an app ready to grow.
           </p>
           <div className="ds-flex ds-gap-3">

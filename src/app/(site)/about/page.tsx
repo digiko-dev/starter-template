@@ -8,8 +8,8 @@ export default function AboutPage() {
     <section className="ds-section ds-pt-16">
       <Flex direction="col" gap="6" className="ds-container ds-max-w-3xl">
         <p className="ds-overline">About</p>
-        <h1 className="ds-section-title">One place to start every project.</h1>
-        <p className="ds-editorial-lede">
+        <h1 className="ds-heading-2">One place to start every project.</h1>
+        <p className="ds-copy">
           Replace this copy with your story. This page is a placeholder that shows
           the site shell — header, content, footer — on an inner route.
         </p>
