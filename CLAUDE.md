@@ -52,7 +52,7 @@ The design system is installed from `@adamarant/designsystem`. Always read sourc
 | Full compiled CSS | `node_modules/@adamarant/designsystem/dist/designsystem.css` |
 | Usage examples | `node_modules/@adamarant/designsystem/examples/index.html` |
 
-For DS styling rules, component-first approach, and usage patterns → DS_HEALTH.md
+The design system rules are frozen with the package. See the note at the top of this file; the live system is [WebCommerciale OS](/Projects/os/CLAUDE.md).
 
 ### 3. CSS Architecture
 
@@ -138,6 +138,6 @@ DS Repo:        github.com/adamarant/designsystem
 
 ## End-of-Session Checklist
 
-For DS checklist (CONTROLLED MODE, compliance, build, git) → [DS_HEALTH.md](/Projects/infra/DS_HEALTH.md)
+Session close → [DEV_CONVENTIONS.md](/Projects/infra/DEV_CONVENTIONS.md). The DS checklist went with CONTROLLED MODE on 27 August 2026.
 
 This is a template project — no project-specific checklist items needed.
