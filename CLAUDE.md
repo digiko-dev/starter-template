@@ -1,9 +1,15 @@
-## Design System → [DS_HEALTH.md](/Projects/infra/DS_HEALTH.md)
-For dev conventions (API shape, TanStack Query, Supabase, Redis, commit) → [DEV_CONVENTIONS.md](/Projects/infra/DEV_CONVENTIONS.md)
-
-CONTROLLED MODE attivo. Regole DS, azioni aperte, metriche: tutto centralizzato in [DS_HEALTH.md](/Projects/infra/DS_HEALTH.md).
-Ops Triage: when the user describes a task, automatically call `ops_triage`. Details in DS_HEALTH.md section "Ops Triage".
-Customizzazioni CSS project-specific: [DS_CUSTOM.md](DS_CUSTOM.md) — consultare prima di aggiungere/modificare CSS custom.
+> **This template is finished. 27 August 2026.**
+>
+> It scaffolds onto `@adamarant/designsystem`, frozen at 0.43.0 by D8 on 21
+> August 2026, so **a new project does not start here any more**: the new way to
+> build is [WebCommerciale OS](/Projects/os/CLAUDE.md). What this repo is for now
+> is the projects already cloned from it, which are equally finished.
+>
+> If it needs a change, make the smallest one that works. The design system
+> guardrails are **off here on purpose**, and CONTROLLED MODE, `ops_triage` and
+> the class creation protocol no longer exist.
+>
+> Still in force: [DEV_CONVENTIONS.md](/Projects/infra/DEV_CONVENTIONS.md).
 
 ---
 
